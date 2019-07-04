@@ -35,8 +35,38 @@ public class Game {
 		return state.equals(Stop_state);
 	}
 class Game_starter extends Thread implements GameInterfaces.StarttheGame{
+	int index ;
+	Game_starter (){
+		index=-1;
+		
+	}
+	Game_starter (int i ){
+		index=i ;
+		
+	}
+	public void run () {
+		synchronized (Play_lock) {
+			
+			while (!IsRaedy())
+				try {
+					Thread.sleep(1000);
+					
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+		}
+		start(p);
+		
+	}
+	@Override
+	public void Start(Player P) {
+		new Game().Start(i);
+	} 
+	
 	
 }
+class 
 	class Player  {
 		public void start (int index) {
 			if (index ==-1) {

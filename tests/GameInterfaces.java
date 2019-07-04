@@ -6,6 +6,7 @@ public interface GameInterfaces {
 	
 	interface StarttheGame   {
 		public void start (Player p );
+
 	}
 	
 	interface PlaytheGame  {
