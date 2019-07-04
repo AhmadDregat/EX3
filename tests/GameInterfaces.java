@@ -4,15 +4,15 @@ import tests.Game.Player;
 
 public interface GameInterfaces {
 	
-	interfaec StarttheGame   {
+	interface StarttheGame   {
 		public void start (Player p );
 	}
 	
-	interfaec PlaytheGame  {
+	interface PlaytheGame  {
 		public void Play (Player p );
 	}
 	
-	interfaec StoptheGame   {
+	interface StoptheGame   {
 		public void Stop  (Player p );
 	}
 }

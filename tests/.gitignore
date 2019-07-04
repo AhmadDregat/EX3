@@ -1,3 +1,7 @@
 /Game$Player.class
 /Game.class
 /GameInterfaces.class
+/Game$Game_starter.class
+/GameInterfaces$PlaytheGame.class
+/GameInterfaces$StarttheGame.class
+/GameInterfaces$StoptheGame.class
