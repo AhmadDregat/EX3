@@ -27,46 +27,128 @@ public class Game {
 	public Boolean IsRaedy() {
 		return state.equals(Stop_state);
 	}
+	public boolean  has_started () {
+		return state.equals(start_state);
+		
+	}
 	public Boolean isRunning() {
 		return state.equals(play_state);
-		
+
 	}
 	public Boolean  Fineshed () {
 		return state.equals(Stop_state);
 	}
-class Game_starter extends Thread implements GameInterfaces.StarttheGame{
-	int index ;
-	Game_starter (){
-		index=-1;
-		
-	}
-	Game_starter (int i ){
-		index=i ;
-		
-	}
-	public void run () {
-		synchronized (Play_lock) {
-			
-			while (!IsRaedy())
-				try {
-					Thread.sleep(1000);
-					
-				} catch (Exception e) {
-					// TODO: handle exception
-					e.printStackTrace();
-				}
+	class Game_starter extends Thread implements GameInterfaces.StarttheGame{
+		int index ;
+		Game_starter (){
+			index=-1;
+
 		}
-		start(p);
-		
+		Game_starter (int i ){
+			index=i ;
+
+		}
+		public void run () {
+			synchronized (Play_lock) {
+
+				while (!IsRaedy())
+					try {
+						Thread.sleep(1000);
+
+					} catch (Exception e) {
+						// TODO: handle exception
+						e.printStackTrace();
+					}
+			}
+			start(p);
+
+		}
+	
+		@Override
+		public void start(Player p) {
+			// TODO Auto-generated method stub
+				p.start(index);
+			state=start_state;
+
+		} 
+
+
 	}
-	@Override
-	public void Start(Player P) {
-		new Game().Start(i);
-	} 
+	class Game_stop extends Thread implements GameInterfaces.StoptheGame{
+		int index ;
+		Game_stop (){
+			index=-1;
+
+		}
+		Game_stop (int i ){
+			index=i ;
+
+		}
+		public void run () {
+			synchronized (Play_lock) {
+
+				while (!isRunning())
+					try {
+						Thread.sleep(1000);
+
+					} catch (Exception e) {
+						// TODO: handle exception
+						e.printStackTrace();
+					}
+			}
+		Stop(p);
+
+		}
 	
+		@Override
+		public void Stop(Player p) {
+			// TODO Auto-generated method stub
+				p.stop(index);
+			state=Stop_state;
+
+		}
 	
-}
-class 
+
+
+	}
+	class Game_Play extends Thread implements GameInterfaces.PlaytheGame{
+		int index ;
+		Game_Play (){
+			index=-1;
+
+		}
+		Game_Play (int i ){
+			index=i ;
+
+		}
+		public void run () {
+			synchronized (Play_lock) {
+
+				while (!(has_started()))
+					try {
+						Thread.sleep(1000);
+
+					} catch (Exception e) {
+						// TODO: handle exception
+						e.printStackTrace();
+					}
+			}
+			Play(p);
+
+		}
+	
+		@Override
+		public void Play(Player p) {
+			// TODO Auto-generated method stub
+				p.Play(index);
+			state=play_state;
+
+		} 
+
+
+	}
+	
+	 
 	class Player  {
 		public void start (int index) {
 			if (index ==-1) {
