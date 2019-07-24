@@ -1,4 +1,4 @@
-package tests;
+package Networking;
 
 public class TestSenderReceiver {
 
