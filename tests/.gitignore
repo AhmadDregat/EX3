@@ -5,3 +5,5 @@
 /GameInterfaces$PlaytheGame.class
 /GameInterfaces$StarttheGame.class
 /GameInterfaces$StoptheGame.class
+/receiver.class
+/TestSenderReceiver.class
